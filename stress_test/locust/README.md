@@ -98,3 +98,14 @@ locust -f ./{locust_script}.py --worker --master-host=127.0.0.1
 # run without WEB UI
 locust -f ./{locust_script}.py -H http://localhost:5032 -u 10 -r 1 -t 10s --headless
 ```
+
+#### Docker
+```shell
+cd ~
+mkdir locust && cd locust
+vim ./locust_script.py
+
+docker pull locustio/locust
+
+docker run --rm -v ~/locust:/locust locustio/locust -p 8089:8089 -f /locust/example1.py
+```
